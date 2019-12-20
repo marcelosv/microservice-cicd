@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  portainer:
+    image: portainer/portainer
+    ports:
+      - 9000:9000
+    networks:
+      - portainer-net
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer:/data
+
+volumes:
+  portainer:
+    driver: local
+
+networks:
+  portainer-net:

@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.marcelsouzav.udemy.microservicecicd</groupId>
+	<artifactId>microservicecicd-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>microservicecicd-parent</name>
+
+    <modules>
+		<!-- microservices -->
+		<module>microservice-send</module>
+		<module>microservice-send-email</module>
+		<module>microservice-send-sms</module>
+
+		<!-- modulo para disparada requests -->
+		<module>artilharia-test</module>
+
+		<!-- modulo para monitorar se aplicação está rodando -->
+		<module>server-admin</module>
+		<module>hystrix-dashboard</module>
+    </modules>
+    
+</project>
