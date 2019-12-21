@@ -1,0 +1,7 @@
+version: "3.3"
+
+services:
+  microservicecicd-send-email:
+    image: udemy-microservicecicd-send-email:v1
+    ports:
+      - 8081:8081
