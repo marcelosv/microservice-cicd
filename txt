@@ -1,1 +1,17 @@
 http://localhost:8080/actuator/hystrix.stream
+
+
+
+   stage('Push docker') {
+      sh "docker login --username=$DOCKER_USER_REGISTER --password=$DOCKER_PASS_REGISTER $DOCKER_HOST_REGISTER"
+      sh "docker push registry.vhl.inf.br/schedules:" + pom.version
+   }
+
+//   stage('Clone docker config') {
+ //     git credentialsId: 'git', url: 'git@github.com:Infobec/vhl-docker.git'
+  // }
+
+ //  stage('Deploy') {
+   //   sh "docker stack deploy --compose-file producao/producao/docker-compose-eintimacao-central.yml prod-eintimacao --with-registry-auth "
+      //sh "docker service update --force 	prod-eintimacao_eintimacao-prod "
+//   }
