@@ -5,3 +5,9 @@ services:
     image: udemy-microservicecicd-send-email:v1
     ports:
       - 8081:8081
+    networks:
+      - udemy
+
+networks:
+  udemy:
+    external: true
