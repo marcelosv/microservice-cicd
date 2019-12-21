@@ -5,6 +5,8 @@ services:
     image: udemy-microservicecicd-send-email:v1
     ports:
       - 8081:8081
+    environment:
+      - spring.boot.admin.client.url=${SPRING_ADMIN}
     networks:
       - udemy
 
