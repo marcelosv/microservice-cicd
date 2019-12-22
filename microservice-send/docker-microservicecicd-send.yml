@@ -6,7 +6,7 @@ services:
     ports:
       - 8084:8084
     environment:
-      - spring.boot.admin.client.url=http://${SPRING_ADMIN}:8090
+      - spring.boot.admin.client.url=http://${IP}:8090
       - sms.server.url=http://${IP}:8082
       - email.server.url=http://${IP}:8081
 
