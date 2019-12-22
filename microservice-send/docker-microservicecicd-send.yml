@@ -4,7 +4,7 @@ services:
   microservicecicd-send:
     image: udemy-microservicecicd-send:v1
     ports:
-      - 8080:8080
+      - 8084:8084
     environment:
       - spring.boot.admin.client.url=http://${SPRING_ADMIN}:8090
       - sms.server.url=http://${IP}:8082
