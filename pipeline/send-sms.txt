@@ -1,0 +1,25 @@
+node {
+   def mvnHome
+   stage('Clone') {
+      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true, recursiveSubmodules: true, reference: '', trackingSubmodules: true]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/marcelosv/microservice-cicd.git']]])
+      mvnHome = tool 'm1'
+   }
+
+   stage('Install send sms') {
+       dir('microservice-send-sms') {
+           sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean install -DskipTests "
+       }
+   }
+
+   stage('Build docker send sms') {
+       dir('microservice-send-sms') {
+          sh "docker build -t udemy-microservicecicd-send-sms:v1 ."
+       }
+   }
+
+    stage('Deploy') {
+      dir('microservice-send-sms') {
+         sh "SPRING_ADMIN=http://192.168.0.105:8090 docker stack deploy --compose-file docker-microservicecicd-send-sms.yml send_sms  "
+      }
+    }
+}
