@@ -2,6 +2,7 @@ version: '2'
 services:
   jenkins:
     image: 'jenkins_marcelo:latest'
+#    image: 'jenkins/jenkins:lts'
     ports:
       - '8080:8080'
       - '443:8443'
